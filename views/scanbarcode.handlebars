@@ -1,0 +1,72 @@
+
+
+<link rel="stylesheet" href="css/style.css">
+
+<h1 dir="rtl">משוך סחורה מהמלאי</h1>
+<body>
+<div class="subscribe-box">
+	<form action="/scanbarcode" method="post" class="subscribe" onsubmit="setTimeout(function(){window.location.reload();},1000); showitem();">
+
+		<p>הזן ברקוד:</p>
+		<input type="text" name="upc" id="myText" autofocus>
+
+
+
+		<input type="submit" value="משוך מוצר מהמלאי" onclick=" myFunction();">
+
+	</form>
+
+	<div id="demo" style="font-size: xx-large;"></div>
+
+</div>
+<h1>מוצרים אחרונים שירדו</h1>
+<table class="sortable table table-dark table-striped" dir="rtl" id="myTable">
+	<thead>
+		<tr>
+			<th style="text-align: center;">תאריך</th>
+			<th style="text-align: center;">כמות</th>
+			<th style="text-align: center;"> תת קטגוריה</th>
+			<th style="text-align: center;">קטגוריה</th>
+			<th style="text-align: center;">שם</th>
+			<th style="text-align: center;">ברקוד</th>
+		</tr>
+	</thead>
+	{{#each docs}}
+	<tbody>
+		<td style="text-align: center;">{{this.date}}</td>
+		<td style="text-align: center;">{{this.amount}}</td>
+		<td style="text-align: center;">{{this.subcategory}}</td>
+		<td style="text-align: center;">{{this.category}}</td>
+		<td style="text-align: center;">{{this.name}}</td>
+		<td style="text-align: center;">{{this.upc}}</td>
+	</tbody>
+	{{/each}}
+
+</table>
+</body>
+<script>
+	//סקריפט שמציג את המוצר שירד מהמלאי
+
+window.onload = function() {
+  document.getElementById("myText").focus();
+};
+
+	
+	function myFunction() {
+
+		var x = document.getElementById("myText").value;
+		if (x == '' || x == ' ') {
+			document.getElementById("demo").innerHTML = x + 'הכנס ברקוד ונסה שוב!';
+			document.getElementById("demo").style.color = "#e52222";
+
+		}
+		else {
+			document.getElementById("demo").innerHTML = x + ' מוצר הורד מהמלאי בהצלחה ';
+			document.getElementById("demo").style.color = "#5f893b";
+
+		}
+	}
+
+
+
+</script>

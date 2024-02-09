@@ -1,0 +1,88 @@
+{{!-- הצגת סטטיסטיקת מכירות של מוצר --}}
+
+<style>
+
+.button-1 {
+  background-color: rgb(31, 29, 29);
+  border: 3px solid #0d6efd;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
+  color: #0d6efd;
+  text-size-adjust: 25%;
+  height: 40px;
+  width: 25%;
+}
+.button-1:hover {
+  box-shadow: 0 0 10px 0 #0d6efd inset, 0 0 20px 2px #0d6efd;
+  border: 3px solid #0d6efd;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#amountinput
+{
+	width: 35%;
+}
+#butomsub
+{
+	text-align: right;
+	padding: 10px;
+}
+</style>
+
+
+<h1 dir="rtl" style="text-align: center;" >שינוי/עדכון מלאי באופן ידני</h1>
+<h2 style="text-align: center; color: red;">לשימוש רק במקרים של טעויות.</h2>
+
+<body style="text-align: center;">
+<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+		
+		<form action="/changemanually" method="post" onload="getFocus()" class="subscribe" onsubmit="setTimeout(function(){window.location.reload();},1000); showitem();">
+		
+	<div id="butomsub">
+	<input type="submit" name="submit" value="לחץ כאן לעדכון המלאי" class="butsumbit button-1"/>
+	</div>	
+		
+		<table class="sortable table table-dark table-striped" dir="rtl" id="myTable" >
+
+			<thead>
+				<tr>
+
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio6">מיין לפי ברקוד</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio2">מיין לפי כמות</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio5">מיין לפי שם</label></button>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio3">מיין לפי תת קטגוריה</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio4">מיין לפי קטגוריה</label>
+					</th>
+					
+				</tr>
+			</thead>
+			<tbody class="sortable">
+
+				{{#each docs}}
+				<tr dir="rtl">
+
+					<td style="text-align: center;">{{this.upc}}</td>
+					<td style="text-align: center;">{{this.amount}}<input type="number" name="amountchange" id="amountinput"></td>
+					<td style="text-align: center;">{{this.name}}</td>
+					<td style="text-align: center;">{{this.category}}</td>
+					<td style="text-align: center;">{{this.subcategory}}</td>
+					
+
+				</tr>
+				{{/each}}
+
+			</tbody>
+			</form>
+		</table>
+        </body>
+		

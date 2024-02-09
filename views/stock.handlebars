@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<body>
+
+
+	<h1 style="text-align: center;" dir="rtl">מלאי </h1>
+
+
+	<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+		
+		<table class="sortable table table-dark table-striped" dir="rtl" id="myTable" >
+
+
+			<thead>
+				<tr>
+
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio6">מיין לפי ברקוד</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio2">מיין לפי כמות</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio5">מיין לפי שם</label></button>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio3">מיין לפי תת קטגוריה</label>
+					</th>
+					<th style="text-align: center;"><input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+						<label class="btn btn-outline-primary" for="btnradio4">מיין לפי קטגוריה</label>
+					</th>
+					<th style="text-align: center;"> <input type="radio" class="btn-check" onclick="sortTable()" name="btnradio" id="btnradio1" autocomplete="off"
+							checked>
+						<label class="btn btn-outline-primary" for="btnradio1" onclick="sortTable()">מיין לפי תאריך</label>
+					</th>
+				</tr>
+			</thead>
+			<tbody class="sortable">
+
+				{{#each docs}}
+				<tr dir="rtl">
+
+					<td style="text-align: center;">{{this.upc}}</td>
+					<td style="text-align: center;">{{this.amount}}</td>
+					<td style="text-align: center;">{{this.name}}</td>
+					<td style="text-align: center;">{{this.category}}</td>
+					<td style="text-align: center;">{{this.subcategory}}</td>
+					<td style="text-align: center;">{{this.date}}</td>
+
+				</tr>
+				{{/each}}
+
+			</tbody>
+		</table>
+	</div>
+
+
+
+
+
+</body>
+
+</html>

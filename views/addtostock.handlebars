@@ -1,0 +1,228 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS Barcode</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+    <style>
+    body {
+	background-color: #ffffff;
+	color: rgb(0, 0, 0);
+}
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.spacer {
+	margin-top: 6rem;
+}
+
+/* barcode container */
+.anim-box {
+	position: relative;
+	width: 300px;
+	height: 100px;
+	padding: 10px 30px;
+	transition: transform .6s ease-out;
+}
+
+/* adds the 4 corners */
+.anim-box:before, .anim-box:after, .anim-box>:first-child:before, .anim-box>:first-child:after {
+	position: absolute;
+	width: 5%; height: 15%;
+	border-color: rgb(0, 0, 0); 
+	border-style: solid;
+	content: ' ';
+}
+
+/* top left corner */
+.anim-box:before {
+	top: 0; left: 0;
+	border-width: 2px 0 0 2px;
+}
+
+/* top right corner */
+.anim-box:after {
+	top: 0; right: 0;
+	border-width: 2px 2px 0 0;
+}
+
+/* bottom right corner */
+.anim-box>:first-child:before {
+	bottom: 0; right: 0;
+	border-width: 0 2px 2px 0;
+}
+
+/* bottom left corner */
+.anim-box>:first-child:after {
+	bottom: 0; left: 0;
+	border-width: 0 0 2px 2px;
+}
+
+/* barcode bars */
+.anim-item {
+	display: inline-flex;
+	background-color: rgb(0, 0, 0);
+	width: 300px;
+    height: 100px;
+}
+
+.anim-item-sm {
+	width: 2px;
+	margin-right: 3px;
+}
+
+.anim-item-md {
+	width: 3px;
+	margin-right: 2px;
+}
+
+.anim-item-lg {
+	width: 5px;
+	margin-right: 5px;
+}
+
+/* grow on hover */
+.anim-box:hover {
+	transform: scale(1.5, 2);
+}
+
+.anim-box:hover .scanner {
+  animation-play-state: running;
+}
+
+/* animated laser beam */
+.scanner {
+	width: 100%;
+	height: 3px;
+	background-color: red;
+  opacity: 0.7;
+  position:relative;
+  box-shadow: 0px 0px 8px 10px rgba(170, 11, 23, 0.49);
+  top:50%;
+  animation-name: scan;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+@keyframes scan {
+  0% {
+    box-shadow: 0px 0px 8px 10px rgba(170, 11, 23, 0.49);
+    top: 50%;
+  }  
+  25% {
+    box-shadow: 0px 6px 8px 10px rgba(170, 11, 23, 0.49);
+    top: 5px;
+  }
+  75% {
+    box-shadow: 0px -6px 8px 10px rgba(170, 11, 23, 0.49);
+    top: 98%;
+  }
+}
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align: center;" dir="rtl">הוסף מוצר למלאי </h1>
+
+    <div class='spacer'></div>
+    <div class='anim-box center spacer'>
+        <!-- empty first child used for corners -->
+        <div></div>
+        <div class='scanner'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-md'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-md'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-lg'></div>
+        <div class='anim-item anim-item-sm'></div>
+        <div class='anim-item anim-item-md'></div>
+
+    </div>
+    <form action="/addtostock" method="post" onload="getFocus()" class="subscribe" onsubmit="setTimeout(function(){window.location.reload();},1000); showitem();" style="text-align: center; padding-top: 80px;">
+    
+        <p>הזן ברקוד:</p>    
+        <input type="text" name="upc" id="getupc" >
+        
+    
+       <br>
+       <br>
+
+       <p>הזן כמות:</p>    
+        <input type="text" name="amount"  min="1" value="1" id="getamount">
+        
+         <br>
+       <br>
+
+    <input type="submit" value="הוסף מוצר למלאי"  onclick=" myFunction();" >
+
+</form>
+
+    <div class='spacer'></div>
+
+    <div id="infotext1" style="font-size: xx-large;"></div>
+    <div id="infotext2" style="font-size: xx-large;"></div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+<script>
+	//סקריפט שמציג את המוצר שירד מהמלאי
+		
+	
+
+	 function myFunction() {
+
+        var x = document.getElementById("getupc").value;
+        var y = document.getElementById("getamount").value;
+		if(x==''||x==' ')
+		{
+		document.getElementById("infotext1").innerHTML= x +'הכנס ברקוד ונסה שוב!';
+		document.getElementById("infotext1").style.color = "#e52222";
+	
+		}
+		else
+		{
+        document.getElementById("infotext1").innerHTML= ' נוסף למוצר : '+ x;
+		document.getElementById("infotext1").style.color = "#5f893b";
+
+        document.getElementById("infotext2").innerHTML= ' כמות : ' + y;
+		document.getElementById("infotext2").style.color = "#5f893b";
+		
+		}
+    }
+	
+
+	
+</script>

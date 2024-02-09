@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+  *,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+.thisform{
+    background-color:#ffffff ;
+}
+
+h1{
+    color: rgb(0, 0, 0);
+}
+h4 {
+  color: #000000;
+}
+input,
+input[type="radio"] + label,
+input[type="checkbox"] + label:before,
+select option,
+select {
+  width: 100%;
+  padding: 1em;
+  line-height: 1.4;
+  background-color: #adadad;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+input:focus {
+  outline: 0;
+  border-color: #0a28d1;
+}
+input:focus + .input-icon i {
+  color: #0a28d1;
+}
+input:focus + .input-icon:after {
+  border-right-color: #ffffff;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"] + label,
+select {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  float: left;
+  border-radius: 0;
+}
+input[type="radio"] + label:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+input[type="radio"] + label:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+input[type="radio"] + label i {
+  padding-right: 0.4em;
+}
+input[type="radio"]:checked + label,
+input:checked + label:before,
+select:focus,
+select:active {
+  background-color: #39a347;
+  color: rgb(255, 255, 255);
+  border-color: #000000;
+}
+input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label {
+  position: relative;
+  display: block;
+  padding-left: 1.6em;
+}
+input[type="checkbox"] + label:before {
+  position: absolute;
+  top: 0.2em;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  content: "";
+}
+input[type="checkbox"] + label:after {
+  position: absolute;
+  top: 0.45em;
+  left: 0.2em;
+  font-size: 0.8em;
+  color: #fff;
+  opacity: 0;
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+input:checked + label:after {
+  opacity: 1;
+}
+select {
+  height: 3.4em;
+  line-height: 2;
+}
+select:first-of-type {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+select:last-of-type {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+select:focus,
+select:active {
+  outline: 0;
+}
+select option {
+  background-color: #f0f0f0;
+  color: rgb(0, 0, 0);
+}
+.input-group {
+  margin-bottom: 1em;
+  zoom: 1;
+}
+.input-group:before,
+.input-group:after {
+  content: "";
+  display: table;
+}
+.input-group:after {
+  clear: both;
+}
+.input-group-icon {
+  position: relative;
+}
+.input-group-icon input {
+  padding-left: 4.4em;
+}
+.input-group-icon .input-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.4em;
+  height: 3.4em;
+  line-height: 3.4em;
+  text-align: center;
+  pointer-events: none;
+}
+.input-group-icon .input-icon:after {
+  position: absolute;
+  top: 0.6em;
+  bottom: 0.6em;
+  left: 3.4em;
+  display: block;
+  border-right: 1px solid #e5e5e5;
+  content: "";
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.input-group-icon .input-icon i {
+  -webkit-transition: 0.35s ease-in-out;
+  -moz-transition: 0.35s ease-in-out;
+  -o-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.containerwow {
+  max-width: 38em;
+  padding: 1em 3em 2em 3em;
+  margin: 0em auto;
+  background-color: #212529;
+  border-radius: 4.2px;
+  box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
+}
+.row {
+  zoom: 1;
+}
+.row:before,
+.row:after {
+  content: "";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+.col-half {
+  padding-right: 10px;
+  float: left;
+  width: 50%;
+}
+.col-half:last-of-type {
+  padding-right: 0;
+}
+.col-third {
+  padding-right: 10px;
+  float: left;
+  width: 33.33333333%;
+}
+.col-third:last-of-type {
+  padding-right: 0;
+}
+@media only screen and (max-width: 540px) {
+  .col-half {
+    width: 100%;
+    padding-right: 0;
+  }
+}
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <div class="containerwow">
+ <form class="thisform" action="/addnew" method="post">
+      <h1 style="text-align: center;">הוספת מוצר חדש למלאי</h1>
+      <br>
+      <br>
+
+    <div class="row">
+      <h4>ברקוד</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" name="upc" placeholder="הכנס ברקוד"/>
+        <div class="input-icon"><i class="fa fa-user"></i></div>
+      </div>
+      <h4>שם מוצר</h4>
+      <div class="input-group input-group-icon">
+        <input type="text" name="name" placeholder="הכנס שם מוצר"/>
+        <div class="input-icon"><i class="fa fa-envelope"></i></div>
+      </div>
+    
+      </div> 
+   
+    <div class="row">
+      
+      <div>
+        <h4>תת קטגוריה</h4>
+
+        <div class="input-group" >
+          <input id="gender-male" type="radio" name="gender" value="טבק"/>
+          <label for="gender-male">טבק</label>
+          <input id="gender-female" type="radio" name="gender" value="סיגריות"/>
+          <label for="gender-female">סיגריות</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      
+     <h4>קטגוריה</h4>
+      <div>
+        <div class="input-group">
+          <select id="mySelect"  name="values">
+            <option>בחר חברה</option>
+            <option>אירופה</option>
+            <option>אל אמ</option>
+            <option>אל די</option>
+            <option>אמריקן ספיריט</option>
+            <option>בלאק דוויל</option>
+            <option>ברודווי</option>
+            <option>גולדן וירג'יניה</option>
+            <option>גולף</option>
+            <option>היטס</option>
+            <option>היי וואי</option>
+            <option>וינסטון</option>
+            <option>טיים</option>
+            <option>כאמל</option>
+            <option>לאקי</option>
+            <option>מונטנה</option>
+            <option>מוסטנג</option>
+            <option>מרילנד</option>
+            <option>מרלבורו</option>
+            <option>נובלס</option>
+            <option>נלסון</option>
+            <option>נקסט</option>
+            <option>פאל מאל</option>
+            <option>פרלמנט</option>
+            <option>צ'סטרפילד</option>
+            <option>קנט</option>
+            <option>רוטמנס</option>
+            <option>שרתון</option>
+    
+           
+          </select>
+         
+
+        </div>
+        
+      </div>
+      <input type="text" placeholder="אחר..."/ name="other">
+    </div>
+    <div class="row">
+   
+
+      <h4 style="text-align: center;">----------------------------------------</h4>
+
+      <div class="input-group">
+       <input type="submit" value="הוסף" onclick=" myFunction();">
+        
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>
